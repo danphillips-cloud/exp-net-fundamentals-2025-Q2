@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# === CONFIGURATION ===
+STACK_NAME="NetBootVPC"
+TEMPLATE_FILE="template.yaml"
+REGIONS="us-east-1"
+
+# Parameters
+VPC_CIDR="11.200.123.0/24"
+PRIVATE_SUBNET_CIDR="11.200.123.0/25"
+PUBLIC_SUBNET_CIDR="11.200.123.128/25"
+AVAILABILITY_ZONE="us-east-1a"  # update if needed
+
+echo "=========================================="
+echo "Deploying CloudFormation stack: $STACK_NAME"
+echo "Template: $TEMPLATE_FILE"
+echo "------------------------------------------"
+echo "Parameters:"
+echo "  VPC CIDR:             $VPC_CIDR"
+echo "  Private Subnet CIDR:  $PRIVATE_SUBNET_CIDR"
+echo "  Public Subnet CIDR:   $PUBLIC_SUBNET_CIDR"
+echo "  Availability Zone:    $AVAILABILITY_ZONE"
+echo "=========================================="
+
+# === DEPLOY STACK ===
+echo "Starting deployment..."
+aws cloudformation deploy \
+  --stack-name "$STACK_NAME" \
+  --template-file "$TEMPLATE_FILE" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides \
+    VpcCidr="$VPC_CIDR" \
+    PrivateSubnetCidr="$PRIVATE_SUBNET_CIDR" \
+    PublicSubnetCidr="$PUBLIC_SUBNET_CIDR" \
+    AvailabilityZone="$AVAILABILITY_ZONE"
+
+if [ $? -ne 0 ]; then
+  echo "❌ Deployment failed. Check the error above."
+  exit 1
+fi
+
+# === OPTIONAL OUTPUT ===
+echo "✅ Deployment complete."
+echo "Retrieving stack outputs..."
+
+aws cloudformation describe-stacks \
+  --stack-name "$STACK_NAME" \
+  --query "Stacks[0].Outputs" \
+  --output table
+
+echo "Done."
