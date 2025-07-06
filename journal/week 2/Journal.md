@@ -1,6 +1,6 @@
-## Title Goes Here 
+## Week 2 issues and pivot
 
-This week was challenging for sure. Due to hardware limitations and time restrictions, I had to think of how to complete the work. I decided to take inspiriatoin from week 1 and have a look at my own Mediaserver stack setup and apply some knowledge learned in the class. 
+This week was challenging for sure. Due to hardware limitations and time restrictions, I had to think of how to complete some of the work. I decided to take inspiration from week 1 and have a look at my own Mediaserver stack setup and apply some knowledge learned in the class. 
 
 ## CML
 
