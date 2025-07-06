@@ -1,4 +1,4 @@
-# exp-net-fundamentals-2025-Q2
+# EXP-NET-FUNDAMENTALS-2025-Q2
 Repo for Network Fundamenals Bootcamp - TEMPLATE!!
 ## Technical Video Demonstration
 
