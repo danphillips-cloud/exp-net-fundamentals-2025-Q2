@@ -6,7 +6,7 @@ This week was challenging for sure. Due to hardware limitations and time restric
 
 Cisco makes this quite challening to access and download. After getting the ISO, image and VMWare Workstation, I started to get errors:
 
-Turns out my laptop is not compatible and cannot rum CML
+Turns out my laptop is not compatible and cannot rum CML due to not supporting VTY-x/EPT
 
 ## Mediaserver Stack
 
@@ -27,8 +27,3 @@ Nginx listens on port 80 of the host machine (e.g. 192.168.1.100). Instead of ex
 
 The internal service containers are not directly exposed to the network.Nginx forwards requests and responses between the client and each internal service, acting as a reverse proxy.
 
-## VPN
-
-I've been using VPN service from Private Ineternet Access in my media setup. Using Splt Tunneling I was able to isolate the VPN to only Firefox and qBittorrent. However I noticed that the PIA Windows app takes up quite a bit of resources, almost as much as transcoding at times. 
-
-I've not added gluttin to my stack, as this is a Wireguard based client that I can use my PIA credentials with. 
